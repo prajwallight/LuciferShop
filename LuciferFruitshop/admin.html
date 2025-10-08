@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | LuciferFruits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">LuciferFruits Admin</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="bloxfruit.html">BloxFruit Shop</a>
+            <a href="#" onclick="exportData()">Export Data</a>
+            <a href="#" onclick="importData()">Import Data</a>
+        </nav>
+    </header>
+
+    <section class="admin-container">
+        <h2>Admin Panel</h2>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Total Products</h3>
+                <span id="totalProducts">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>Total Orders</h3>
+                <span id="totalOrders">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>Low Stock Items</h3>
+                <span id="lowStockCount">0</span>
+            </div>
+        </div>
+        
+        <h3>Add New Product</h3>
+        <input type="text" id="pName" placeholder="Product Name"><br>
+        
+        <!-- Drag & Drop Image Upload -->
+        <div class="drop-zone" id="dropZone">
+            <p>📁 Drag & drop product image here or click to browse</p>
+            <img id="imagePreview" class="preview-image" alt="Preview">
+        </div>
+        <input type="file" id="pImageFile" accept="image/*" style="display: none;">
+        <input type="hidden" id="pImage"><br>
+        
+        <input type="text" id="pPrice" placeholder="Price"><br>
+        <input type="number" id="pQty" placeholder="Quantity" min="0"><br>
+        <input type="text" id="pDesc" placeholder="Description"><br>
+        <button onclick="addProduct()">Add Product</button>
+
+        <h3>Existing Products</h3>
+        <div class="admin-products" id="adminProducts"></div>
+
+        <h3>Customer Orders</h3>
+        <div class="orders-container" id="ordersContainer"></div>
+
+        <h3>Customer Messages</h3>
+        <div class="messages-container" id="messagesContainer"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

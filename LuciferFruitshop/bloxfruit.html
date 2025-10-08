@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloxFruit Shop | LuciferFruits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">LuciferFruits</div>
+        <nav>
+            <a href="index.html">Back to Home</a>
+            <a href="#" onclick="openOrderTracking()">My Orders</a>
+            <a href="#" onclick="openCart()">Cart (<span id="cartCount">0</span>)</a>
+            <a href="#" onclick="openAdminLogin()">Lucifer</a>
+        </nav>
+    </header>
+
+    <section id="shop">
+        <h2>BloxFruit Shop</h2>
+        <div class="products" id="productsContainer"></div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <h3>Your Cart</h3>
+            <div id="cartItems"></div>
+            <div class="cart-total">Total: $<span id="cartTotal">0</span></div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            <button class="close-btn" onclick="closeCart()">Close</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <h3>Checkout</h3>
+            <form name="order" netlify action="/order-success.html" class="checkout-form">
+                <input type="text" name="customerName" placeholder="Your Name" class="checkout-input" required>
+                <input type="email" name="customerEmail" placeholder="Your Email" class="checkout-input" required>
+                <input type="text" name="customerGameID" placeholder="Your Game ID" class="checkout-input" required>
+                <input type="hidden" name="orderDetails" id="orderDetails">
+                <input type="hidden" name="orderTotal" id="orderTotal">
+                <div class="cart-total">Total: $<span id="checkoutTotal">0</span></div>
+                <button type="submit" class="checkout-btn">Place Order</button>
+                <button type="button" class="close-btn" onclick="closeCheckout()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Tracking Modal -->
+    <div class="modal" id="orderTrackingModal">
+        <div class="modal-content">
+            <h3>Track Your Order</h3>
+            <input type="text" id="orderEmail" placeholder="Enter your email" class="tracking-input">
+            <button class="checkout-btn" onclick="trackOrder()">Track Order</button>
+            <div id="orderDetails"></div>
+            <button class="close-btn" onclick="closeOrderTracking()">Close</button>
+        </div>
+    </div>
+
+    <!-- Contact Support Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h3>Contact Support</h3>
+            <form name="contact" netlify action="/contact-success.html" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" class="checkout-input" required>
+                <input type="email" name="email" placeholder="Your Email" class="checkout-input" required>
+                <input type="text" name="orderId" placeholder="Order ID (optional)" class="checkout-input">
+                <textarea name="message" placeholder="How can we help you?" class="checkout-input" rows="4" required></textarea>
+                <button type="submit" class="checkout-btn">Send Message</button>
+                <button type="button" class="close-btn" onclick="closeContact()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
